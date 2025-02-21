@@ -14,9 +14,9 @@ class MainController extends GetxController {
   //Called when the user scrolls to the end of the list
   void loadMoreNumbers() {
     numbers.addAll(
-        utilFunctions.buildNextNumbers(numbers[numbers.length - 1].number));
+        utilFunctions.buildNextNumbers(numbers[numbers.length - 1].number + 1));
     //As for bigger numbers, the performance will decrease, the pagination used to load the numbers in chunks
-    //But fot above the number 1000000 its better to use API to get the prime numbers.
+    //But for above the number 1000000 its better to use API to get the prime numbers.
   }
 
   //Called when the user presses a number

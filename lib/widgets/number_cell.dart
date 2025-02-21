@@ -24,7 +24,8 @@ class NumberCell extends StatelessWidget {
       onTapDown: (_) => onTapDown(),
       onTapUp: (_) => onTapUp(),
       onTapCancel: onTapUp,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 400),
         height: height,
         margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
@@ -32,6 +33,7 @@ class NumberCell extends StatelessWidget {
         child: Center(
           child: AutoSizeText(
             numberObject.number.toString(),
+            overflow: TextOverflow.ellipsis,
             minFontSize: 5,
             maxLines: 1,
             style: TextStyle(

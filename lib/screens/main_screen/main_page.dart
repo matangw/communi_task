@@ -11,17 +11,24 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final MainController mainController =
-      Get.put(MainController()); //init state//dipsosed
+  late final MainController mainController;
   final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
-    super.initState();
+    mainController = Get.put(MainController());
     scrollController.addListener(onScroll);
+    super.initState();
   }
 
-  // Function to load more numbers when the user scrolls to the end of the list to increase performance
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  // Function to load more numbers when the user scrolls to the end of the list
+  // Pagination to increase performance
   void onScroll() {
     final double maxScroll = scrollController.position.maxScrollExtent;
     final double currentScroll = scrollController.position.pixels;
